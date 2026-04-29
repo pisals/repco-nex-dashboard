@@ -1,0 +1,535 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!-- generated HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>REPCO NEX – Marketing Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root{
+  --primary:#1B3A8C;--action:#2563EB;--light:#DBEAFE;
+  --red:#E02020;--green:#16A34A;--yellow:#D97706;
+  --teal:#0891B2;--purple:#7C3AED;
+  --bg:#F0F4FA;--card:#fff;--text:#0F172A;
+  --muted:#64748B;--border:#CBD5E1;
+  --sh:0 1px 4px rgba(27,58,140,.08);
+  --shm:0 4px 16px rgba(27,58,140,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.hdr{background:#fff;border-bottom:3px solid var(--primary);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;box-shadow:var(--sh);position:sticky;top:0;z-index:100}
+.hl{display:flex;align-items:center;gap:11px}
+.lgr{width:38px;height:38px;background:var(--primary);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;color:#fff;flex-shrink:0}
+.lnm{font-size:.95rem;font-weight:800;color:var(--primary)}.lnm span{color:var(--red)}
+.lsb{font-size:.58rem;font-weight:600;color:var(--muted);letter-spacing:1.3px;text-transform:uppercase}
+.hdv{width:1px;height:30px;background:var(--border);margin:0 10px}
+.ht h1{font-size:.88rem;font-weight:700}.ht p{font-size:.65rem;color:var(--muted);margin-top:1px}
+.hr{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.bg{border-radius:3px;padding:3px 9px;font-size:.67rem;font-weight:700}
+.bg.live{background:#DCFCE7;color:#15803D;border:1px solid #86EFAC}
+.bg.dt{background:var(--light);color:var(--primary);border:1px solid #93C5FD}
+.bg.bl{background:var(--primary);color:#fff}
+.bg.lv{background:#DCFCE7;color:#15803D}
+.bg.ch{background:#FEF9C3;color:#A16207}
+.sbtn{background:var(--action);border:none;color:#fff;padding:5px 12px;border-radius:3px;font-size:.7rem;font-weight:700;cursor:pointer;transition:opacity .15s}
+.sbtn:hover{opacity:.85}
+.lsc{font-size:.62rem;color:var(--muted)}
+.tabs{display:flex;padding:0 24px;background:#fff;border-bottom:2px solid var(--border);overflow-x:auto;box-shadow:var(--sh)}
+.tab{padding:11px 15px;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s}
+.tab.active{color:var(--primary);border-bottom-color:var(--primary);background:#F8FAFF}
+.tab:hover:not(.active){color:var(--primary);background:#F8FAFF}
+.sec{display:none;padding:18px 24px 48px;animation:fu .22s ease}
+.sec.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+@media(max-width:1100px){.g4,.g5{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.g4,.g3,.g2,.g5{grid-template-columns:1fr}.sec{padding:12px 11px 40px}.tabs,.hdr{padding-left:12px;padding-right:12px}}
+.kc{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:15px 15px 12px;position:relative;overflow:hidden;box-shadow:var(--sh);transition:box-shadow .15s,transform .12s}
+.kc:hover{box-shadow:var(--shm);transform:translateY(-1px)}
+.kc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kc.cp::after{background:var(--primary)}.kc.ca::after{background:var(--action)}.kc.cg::after{background:var(--green)}
+.kc.cr::after{background:var(--red)}.kc.cy::after{background:var(--yellow)}.kc.ct::after{background:var(--teal)}.kc.cv::after{background:var(--purple)}
+.ki{width:34px;height:34px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:8px}
+.ki.cp{background:#EFF6FF}.ki.ca{background:#DBEAFE}.ki.cg{background:#DCFCE7}.ki.cr{background:#FEE2E2}.ki.cy{background:#FEF9C3}.ki.ct{background:#E0F2FE}.ki.cv{background:#F5F3FF}
+.klb{font-size:.63rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px}
+.kv{font-size:1.55rem;font-weight:800;color:var(--text);line-height:1}
+.ks{font-size:.63rem;color:var(--muted);margin-top:4px;line-height:1.4}
+.kd{display:inline-flex;align-items:center;gap:3px;font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:3px;margin-top:6px}
+.kd.up{background:#DCFCE7;color:var(--green)}.kd.dn{background:#FEE2E2;color:var(--red)}.kd.fl{background:#FEF9C3;color:var(--yellow)}
+.cc{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:16px;margin-bottom:14px;box-shadow:var(--sh)}
+.cc h3{font-size:.81rem;font-weight:700;color:var(--primary);margin-bottom:2px}
+.cc .cs{font-size:.66rem;color:var(--muted);margin-bottom:12px}
+.chart-svg{width:100%;overflow:visible}
+.bn{background:linear-gradient(135deg,var(--primary),var(--action));border-radius:4px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:13px;flex-wrap:wrap;box-shadow:var(--shm)}
+.bi{font-size:1.8rem;flex-shrink:0}
+.bt h2{font-size:.9rem;font-weight:800;color:#fff;margin-bottom:3px}
+.bt p{font-size:.71rem;color:rgba(255,255,255,.85);line-height:1.5;max-width:680px}
+.pr{margin-bottom:11px}
+.pl{display:flex;justify-content:space-between;font-size:.69rem;font-weight:500;margin-bottom:3px}
+.pb{height:6px;background:#E2E8F0;border-radius:0;overflow:hidden}
+.pf{height:100%;border-radius:0;transition:width .8s ease}
+.dt{width:100%;border-collapse:collapse;font-size:.74rem}
+.dt th{text-align:left;color:var(--muted);font-weight:700;font-size:.63rem;text-transform:uppercase;letter-spacing:.5px;padding:7px 10px;border-bottom:2px solid var(--border);background:#F8FAFF}
+.dt td{padding:8px 10px;border-bottom:1px solid #F1F5F9;color:var(--text)}
+.dt tr:last-child td{border-bottom:none}.dt tr:hover td{background:#F8FAFF}
+.pl2{display:inline-block;padding:2px 7px;border-radius:3px;font-size:.63rem;font-weight:700}
+.pl2.g{background:#DCFCE7;color:#15803D}.pl2.r{background:#FEE2E2;color:#DC2626}.pl2.y{background:#FEF9C3;color:#A16207}
+.pl2.b{background:#DBEAFE;color:#1D4ED8}.pl2.p{background:#F5F3FF;color:#6D28D9}.pl2.gr{background:#F1F5F9;color:#475569}
+.fs{border-radius:3px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;font-size:.76rem;font-weight:600;color:#fff;margin-bottom:6px}
+.pcd{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:13px 15px;margin-bottom:10px;display:flex;align-items:flex-start;gap:11px;box-shadow:var(--sh);transition:border-color .15s}
+.pcd:hover{border-color:var(--action)}
+.pic{width:36px;height:36px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.pic.r{background:#FEE2E2}.pic.y{background:#FEF9C3}.pic.g{background:#DCFCE7}
+.pct h4{font-size:.79rem;font-weight:700;margin-bottom:3px}.pct p{font-size:.7rem;color:var(--muted);line-height:1.5}
+.pm{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.nc{background:var(--card);border:1.5px solid var(--border);border-left:4px solid var(--border);border-radius:4px;padding:13px 15px;margin-bottom:10px;box-shadow:var(--sh)}
+.nc:hover{box-shadow:var(--shm)}
+.nc.Platform{border-left-color:var(--purple)}.nc.Industry{border-left-color:var(--action)}.nc.Competitor{border-left-color:var(--red)}.nc.Trend{border-left-color:var(--green)}
+.ntg{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.ntg.Platform{color:var(--purple)}.ntg.Industry{color:var(--action)}.ntg.Competitor{color:var(--red)}.ntg.Trend{color:var(--green)}
+.nc h4{font-size:.8rem;font-weight:700;margin-bottom:3px}.nc p{font-size:.69rem;color:var(--muted);line-height:1.5}
+.nf{display:flex;justify-content:space-between;align-items:center;margin-top:7px;flex-wrap:wrap;gap:4px}
+.nd{font-size:.63rem;color:var(--muted)}
+.ni{font-size:.63rem;font-weight:700}
+.ni.High{color:var(--red)}.ni.Medium{color:var(--yellow)}.ni.Low{color:var(--green)}
+.lg{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.li{display:flex;align-items:center;justify-content:space-between;font-size:.72rem}
+.ll{display:flex;align-items:center;gap:6px}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.rc{background:var(--card);border:1.5px solid var(--border);border-top:3px solid var(--action);border-radius:4px;padding:13px 15px;margin-bottom:10px;box-shadow:var(--sh)}
+.rn{font-size:.6rem;font-weight:700;color:var(--action);text-transform:uppercase;letter-spacing:.5px}
+.rc h4{font-size:.81rem;font-weight:700;margin:3px 0}.rc p{font-size:.7rem;color:var(--muted);line-height:1.5}
+.shdr{margin-bottom:14px}.shdr h2{font-size:.92rem;font-weight:800;color:var(--primary)}.shdr p{font-size:.7rem;color:var(--muted);margin-top:2px}
+.notice{border-radius:4px;padding:10px 14px;font-size:.73rem;margin:12px 24px;display:flex;align-items:center;gap:8px}
+.notice.ok{background:#DCFCE7;border:1px solid #86EFAC;color:#15803D}
+.notice.warn{background:#FEF9C3;border:1px solid #FDE68A;color:#92400E}
+.notice.err{background:#FEE2E2;border:1px solid #FECACA;color:#DC2626}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hl">
+    <div class="lgr">R</div>
+    <div><div class="lnm">REPCO <span>NEX</span></div><div class="lsb">Industrial Solutions</div></div>
+    <div class="hdv"></div>
+    <div class="ht"><h1>Marketing Performance Dashboard</h1><p id="hdrSub">April 2026 · Marketing Team</p></div>
+  </div>
+  <div class="hr">
+    <span class="bg live">● LIVE</span>
+    <span class="bg dt" id="hdrDate">📅 April 2026</span>
+    <span class="bg" id="srcBadge" style="background:#FEF9C3;color:#A16207">📦 Cache</span>
+    <button class="sbtn" onclick="syncNow()">🔄 Sync Now</button>
+    <span class="lsc" id="lastSync">—</span>
+  </div>
+</div>
+<div class="tabs">
+  <div class="tab active" onclick="switchTab(0)">🏠 Overview</div>
+  <div class="tab" onclick="switchTab(1)">🎯 MQL & Funnel</div>
+  <div class="tab" onclick="switchTab(2)">📘 Facebook Ads</div>
+  <div class="tab" onclick="switchTab(3)">💬 Pain Points</div>
+  <div class="tab" onclick="switchTab(4)">📰 News</div>
+  <div class="tab" onclick="switchTab(5)">💡 Recommendations</div>
+</div>
+<div id="notice" style="display:none" class="notice"></div>
+<div class="sec active" id="s0">
+  <div class="bn"><div class="bi">⚙️</div><div class="bt"><h2 id="ov-h">REPCO NEX — Marketing Dashboard</h2><p id="ov-p">Loading…</p></div></div>
+  <div class="shdr"><h2>📌 Key Performance Indicators</h2><p id="ov-sub">April 2026 vs. March 2026</p></div>
+  <div class="g4" id="kpi1"></div>
+  <div class="g4" id="kpi2"></div>
+  <div class="g2">
+    <div class="cc"><h3>📈 MQL & CPL Trend</h3><div class="cs">Month-over-month performance</div><div id="trendWrap"></div></div>
+    <div class="cc"><h3>🥧 Lead Source Split</h3><div class="cs">MQLs by channel</div><div id="donutWrap"></div><div class="lg" id="srcLgd"></div></div>
+  </div>
+  <div class="cc"><h3>📊 Goal vs. Actual</h3><div class="cs">KPI progress against targets</div><div id="progBars"></div></div>
+</div>
+<div class="sec" id="s1">
+  <div class="shdr"><h2>🎯 MQL & Lead Funnel</h2><p id="mql-sub">Full-funnel tracking</p></div>
+  <div class="g5" id="fnlK"></div>
+  <div class="g2">
+    <div class="cc"><h3>🔻 Lead Funnel</h3><div class="cs">Conversion at each stage</div><div id="fnlSteps"></div></div>
+    <div class="cc"><h3>📅 Weekly MQL vs SQL</h3><div class="cs">Weekly breakdown</div><div id="wkWrap"></div></div>
+  </div>
+  <div class="cc"><h3>📋 MQL by Source</h3><div class="cs">Channel performance</div><div style="overflow-x:auto"><table class="dt"><thead><tr><th>Source</th><th>Leads</th><th>MQLs</th><th>MQL%</th><th>SQLs</th><th>SQL%</th><th>CPL</th><th>Status</th></tr></thead><tbody id="srcTbl"></tbody></table></div></div>
+</div>
+<div class="sec" id="s2">
+  <div class="shdr"><h2>📘 Facebook Ads Performance</h2><p id="fb-sub">Paid media deep-dive</p></div>
+  <div class="g4" id="fb1"></div>
+  <div class="g4" id="fb2"></div>
+  <div class="g2">
+    <div class="cc"><h3>📊 Campaign Spend vs Leads</h3><div class="cs">By campaign</div><div id="campWrap"></div></div>
+    <div class="cc"><h3>👥 Audience CTR</h3><div class="cs">CTR by segment</div><div id="audWrap"></div></div>
+  </div>
+  <div class="cc"><h3>📋 Campaign Detail</h3><div class="cs">All active campaigns</div><div style="overflow-x:auto"><table class="dt"><thead><tr><th>Campaign</th><th>Objective</th><th>Spend</th><th>Impressions</th><th>CTR</th><th>CPL</th><th>Leads</th><th>ROAS</th><th>Status</th></tr></thead><tbody id="campTbl"></tbody></table></div></div>
+  <div class="g2">
+    <div class="cc"><h3>📱 Device Split</h3><div class="cs">By device type</div><div id="devWrap"></div><div class="lg" id="devLgd"></div></div>
+    <div class="cc"><h3>📊 Current vs Target vs Last Month</h3><div class="cs">Key FB metrics</div><div id="fbCmpWrap"></div></div>
+  </div>
+</div>
+<div class="sec" id="s3">
+  <div class="shdr"><h2>💬 Consumer Pain Points</h2><p>Voice of customer insights</p></div>
+  <div class="g4" id="ppK"></div>
+  <div class="g2">
+    <div class="cc"><h3>🔥 Frequency vs Severity</h3><div class="cs">Bubble chart</div><div id="bubWrap"></div></div>
+    <div class="cc"><h3>😊 Sentiment Split</h3><div class="cs">Customer feedback</div><div id="sentWrap"></div><div class="lg" id="sentLgd"></div></div>
+  </div>
+  <div id="painCards"></div>
+</div>
+<div class="sec" id="s4">
+  <div class="shdr"><h2>📰 News & Market Intelligence</h2><p>Monthly briefing</p></div>
+  <div class="g4" id="newsK"></div>
+  <div class="g2" id="newsGrid"></div>
+</div>
+<div class="sec" id="s5">
+  <div class="shdr"><h2>💡 Recommendations</h2><p id="rec-sub">Auto-generated from live data</p></div>
+  <div class="g2"><div id="recUrg"></div><div id="recStr"></div></div>
+  <div class="cc"><h3>🎯 Next Month Projections</h3><div class="cs">Based on current trends</div><div style="overflow-x:auto"><table class="dt"><thead><tr><th>KPI</th><th>Current</th><th>Target</th><th>Gap</th><th>Projected</th><th>Confidence</th></tr></thead><tbody id="projTbl"></tbody></table></div></div>
+</div>
+<script>
+// ════════════════════════════════════════════════════
+//  REPCO NEX DASHBOARD
+//  ✅ UPDATED: Sheet ID = 1HIxq8-_kCin-DrXGyd6DvRcLHInOR22DnPX18UiOjvQ
+//  ✅ UPDATED: GIDs confirmed from user-provided tab URLs
+// ════════════════════════════════════════════════════
+
+// ── ✅ UPDATED BASE URL (your real Google Sheet) ──
+const BASE = 'https://docs.google.com/spreadsheets/d/1HIxq8-_kCin-DrXGyd6DvRcLHInOR22DnPX18UiOjvQ/pub';
+
+// ── ✅ UPDATED GIDs (confirmed from your tab URLs) ──
+const GIDS = {
+  kpi:        '0',
+  mql:        '276659122',
+  facebook:   '706861186',
+  painpoints: '1473659813',
+  news:       '1672593116'
+};
+
+const PROXIES=[
+  u=>`https://corsproxy.io/?${encodeURIComponent(u)}`,
+  u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  u=>u
+];
+
+const FB={
+kpi:`metric,value,target,last_month
+Total MQLs,200,100,300
+Facebook ROAS,4.2,4,3.8
+FB Ads CTR,2.84,2,2.3
+Cost Per Lead,38,45,47
+MQL to SQL Rate,18.4,20,16.3
+Customer Acq Cost,142,150,168
+Total Impressions,2400000,2500000,2030000
+Landing Page CVR,6.7,7,6.1
+NPS Score,42,45,37
+CSAT Score,78,75,75`,
+mql:`stage,value,change_pct
+Impressions,2400000,18
+Clicks,68240,14
+Form Fills,4572,19
+MQLs,1284,22
+SQLs,236,28
+Closed Won,52,15
+week,mql,sql
+Week 1,280,48
+Week 2,312,56
+Week 3,358,72
+Week 4,334,60
+source,leads,mqls,mql_rate,sqls,sql_rate,cpl,status
+Facebook Ads,2180,539,24.7,108,20,32,On Track
+Organic SEO,1420,308,21.7,62,20.1,0,On Track
+Email Campaigns,980,231,23.6,44,19,8,On Track
+Referral,620,128,20.6,18,14.1,12,Watch
+Instagram Ads,480,52,10.8,4,7.7,58,Needs Fix
+LinkedIn,292,26,8.9,0,0,92,Paused`,
+facebook:`metric,value,target,last_month
+ROAS,4.2,4,3.8
+CTR,2.84,2,2.3
+CPM,14.2,15,16.8
+CPC,0.5,0.7,0.73
+Total Spend,12400,12400,11800
+Impressions,1800000,2000000,1520000
+Link Clicks,51120,50000,42200
+Conversions,539,500,421
+campaign,objective,spend,impressions,ctr,cpl,leads,roas,status
+Spring Promo A,Conversion,3800,520000,3.2,28,136,5.1,Top Performer
+Retargeting V2,Retargeting,2100,290000,4.1,22,95,6.2,Top Performer
+Brand Awareness,Reach,2400,680000,1.4,72,33,2.1,Watch
+Lead Gen Form,Lead Gen,2600,220000,3.6,31,84,4.8,On Track
+Mobile Lookalike,Conversion,1500,90000,1.8,68,22,2.8,Optimize
+audience,ctr
+Lookalike 1%,4.1
+Retargeting,3.6
+Interest A,2.9
+Interest B,1.8
+Broad 25-44,1.2
+device,pct
+Mobile,68
+Desktop,24
+Tablet,8`,
+painpoints:`metric,value
+Pain Points Tracked,8
+NPS Score,42
+CSAT Score,78
+Mentions Analyzed,3240
+sentiment,pct
+Positive,54
+Neutral,22
+Negative,24
+title,description,severity,mentions_pct,stage,action
+Pricing Transparency,Customers confused by hidden fees at checkout causing drop-off,High,38,BOFU,Redesign Pricing Page
+Onboarding Complexity,7-step setup too complex causing churn for new users,High,29,Post-Purchase,Simplify to 3 Steps
+Support Response Time,Average 18hr response vs 4hr competitor benchmark,Medium,22,Post-Purchase,Chatbot + Priority Queue
+Mobile UX Issues,Poor mobile experience despite 68% mobile traffic share,Medium,18,MOFU,Mobile UX Audit Q2
+Technical Expertise,Customers praise 40yr expertise and engineering quality,Positive,54,All Stages,Feature in Testimonial Ads
+Community Trust Rising,NPS up 5pts and forum engagement up 34% this month,Positive,34,All Stages,Launch Referral Program`,
+news:`category,title,description,date,impact
+Platform,Meta Ads AI Advantage+ Upgrades Improve CTR 15-20%,Meta expanded tools with auto background and text testing. Activate on top campaigns now.,Apr 8 2026,High
+Industry,REPCO NEX Wins AVEVA Partner Excellence Award 2026,DRS solution wins regional leadership award in ASEAN industrial automation market.,Apr 20 2026,High
+Competitor,Competitor Doubled LinkedIn Spend Targeting Industrial Buyers,Major rival 2x spend on LinkedIn targeting plant managers and procurement heads.,Apr 14 2026,High
+Trend,Short-Form Video Generates 3x More B2B Leads Than Static Ads,Forrester 2026 confirms video ads deliver 3x leads at 40% lower CPL vs static.,Apr 18 2026,High
+Industry,ASEAN Industrial Automation Market Grows 12.4% YoY to 2027,Rising petrochemical investment opens demand for REPCO NEX engineering solutions.,Apr 12 2026,Medium
+Competitor,Competitor Y Dropped Pricing 20% Shifting Consumer Expectations,Price cut driving comparisons. Need value-communication campaign to defend position.,Apr 6 2026,High
+Platform,Facebook Organic Reach Drops Below 2% for Business Pages,Algorithm update reduces organic reach. Paid boosting now essential for reach.,Apr 22 2026,Medium
+Trend,Voice Search in Our Category Up 44% YoY Needs SEO Shift,Voice search now 28% of category searches. Add FAQ schema and conversational keywords.,Apr 25 2026,Low`
+};
+
+const C={p:'#1B3A8C',a:'#2563EB',g:'#16A34A',r:'#E02020',y:'#D97706',t:'#0891B2',v:'#7C3AED',m:'#64748B',
+  palette:['#1B3A8C','#2563EB','#0891B2','#D97706','#E02020','#7C3AED']};
+
+function csv(txt){
+  return txt.trim().split('\n').map(l=>{
+    const cols=[];let cur='',q=false;
+    for(let i=0;i<l.length;i++){
+      if(l[i]==='"'){q=!q}else if(l[i]===','&&!q){cols.push(cur.trim());cur=''}else cur+=l[i];
+    }
+    cols.push(cur.trim());return cols;
+  });
+}
+function N(v){return isNaN(parseFloat(v))?0:parseFloat(v)}
+function F(v){
+  if(v>=1000000)return(v/1000000).toFixed(1)+'M';
+  if(v>=10000)return(v/1000).toFixed(0)+'K';
+  if(v>=1000)return(v/1000).toFixed(1)+'K';
+  return v%1===0?String(v):v.toFixed(1);
+}
+function DLT(cur,last){
+  if(!last)return{p:'0.0',d:'fl'};
+  const p=((cur-last)/Math.abs(last)*100);
+  return{p:Math.abs(p).toFixed(1),d:p>=0?'up':'dn'};
+}
+function PCT(v,t){return t>0?Math.min(Math.round(v/t*100),100):0}
+function PC(s){return{OnTrack:'g','On Track':'g','Top Performer':'b',Watch:'y','Needs Fix':'r',Optimize:'y',Paused:'gr',High:'r',Medium:'y',Low:'g',Positive:'g'}[s]||'gr'}
+function secNext(key,r1,r2){const rows=DATA[key];let j=0;while(j<rows.length&&rows[j][0]!==r1)j++;j++;const o=[];while(j<rows.length){if(rows[j][0]===r2)break;if(rows[j][0])o.push(rows[j]);j++;}return o;}
+
+let DATA={};
+let isLive=false;
+
+function svgBar(data,opts={}){
+  const W=opts.w||500,H=opts.h||200,pad=opts.pad||{l:40,r:10,t:10,b:50};
+  const labels=data.labels||[];
+  const datasets=data.datasets||[];
+  const allVals=datasets.flatMap(d=>d.data.map(Number));
+  const maxV=Math.max(...allVals,1)*1.15;
+  const gW=W-pad.l-pad.r, gH=H-pad.t-pad.b;
+  const bw=Math.floor(gW/labels.length);
+  const dsW=Math.floor(bw*0.7/datasets.length);
+  const gap=Math.floor(bw*0.15);
+  let s=`<svg viewBox="0 0 ${W} ${H}" class="chart-svg">`;
+  [0,.25,.5,.75,1].forEach(f=>{
+    const y=pad.t+gH*(1-f);
+    const v=(maxV*f);
+    const lbl=v>=1000000?(v/1000000).toFixed(1)+'M':v>=1000?(v/1000).toFixed(0)+'K':v.toFixed(1);
+    s+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#E2E8F0" stroke-width="1"/>`;
+    s+=`<text x="${pad.l-4}" y="${y+4}" text-anchor="end" font-size="9" fill="#94A3B8">${lbl}</text>`;
+  });
+  labels.forEach((lbl,i)=>{
+    const x=pad.l+i*bw+gap;
+    datasets.forEach((ds,di)=>{
+      const v=Number(ds.data[i])||0;
+      const bh=Math.max(2,(v/maxV)*gH);
+      const bx=x+di*dsW;
+      const by=pad.t+gH-bh;
+      s+=`<rect x="${bx}" y="${by}" width="${dsW-2}" height="${bh}" fill="${ds.color||C.p}" rx="2" opacity="0.85"/>`;
+    });
+    const tx=pad.l+i*bw+bw/2;
+    const lblTxt=lbl.length>10?lbl.substring(0,9)+'…':lbl;
+    s+=`<text x="${tx}" y="${H-pad.b+14}" text-anchor="middle" font-size="9" fill="#64748B">${lblTxt}</text>`;
+  });
+  if(datasets.length>1){
+    datasets.forEach((ds,i)=>{
+      const lx=pad.l+i*120;const ly=H-8;
+      s+=`<rect x="${lx}" y="${ly-8}" width="10" height="10" fill="${ds.color}" rx="2"/>`;
+      s+=`<text x="${lx+14}" y="${ly}" font-size="9" fill="#64748B">${ds.label||''}</text>`;
+    });
+  }
+  s+='</svg>';return s;
+}
+function svgHBar(labels,values,colors){
+  const W=500,H=Math.max(180,labels.length*36+20),pad={l:100,r:60,t:10,b:10};
+  const maxV=Math.max(...values,1)*1.1;
+  const gW=W-pad.l-pad.r,gH=H-pad.t-pad.b;
+  const bh=Math.floor(gH/labels.length*0.55);
+  let s=`<svg viewBox="0 0 ${W} ${H}" class="chart-svg">`;
+  labels.forEach((lbl,i)=>{
+    const y=pad.t+i*(gH/labels.length);
+    const v=values[i]||0;
+    const bw=Math.max(4,(v/maxV)*gW);
+    const col=colors?colors[i%colors.length]:C.p;
+    s+=`<text x="${pad.l-6}" y="${y+bh/2+4}" text-anchor="end" font-size="9" fill="#374151">${lbl}</text>`;
+    s+=`<rect x="${pad.l}" y="${y+2}" width="${bw}" height="${bh}" fill="${col}" rx="2" opacity="0.85"/>`;
+    s+=`<text x="${pad.l+bw+4}" y="${y+bh/2+4}" font-size="9" fill="#64748B">${v}</text>`;
+  });
+  s+='</svg>';return s;
+}
+function svgLine(labels,datasets,opts={}){
+  const W=opts.w||500,H=opts.h||200,pad={l:44,r:44,t:10,b:40};
+  const gW=W-pad.l-pad.r,gH=H-pad.t-pad.b;
+  const allV=datasets.flatMap(d=>d.data);
+  const minV=Math.min(...allV)*0.85,maxV=Math.max(...allV)*1.15;
+  const xS=i=>pad.l+i*(gW/(labels.length-1||1));
+  let s=`<svg viewBox="0 0 ${W} ${H}" class="chart-svg">`;
+  [0,.25,.5,.75,1].forEach(f=>{
+    const y=pad.t+gH*(1-f);
+    const v=minV+(maxV-minV)*f;
+    s+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#E2E8F0" stroke-width="1"/>`;
+    s+=`<text x="${pad.l-4}" y="${y+4}" text-anchor="end" font-size="9" fill="#94A3B8">${F(v)}</text>`;
+  });
+  datasets.forEach((ds)=>{
+    const yS=v=>pad.t+gH-(((v-minV)/(maxV-minV))*gH);
+    const pts=ds.data.map((v,i)=>`${xS(i)},${yS(v)}`).join(' ');
+    const fillPts=`${xS(0)},${pad.t+gH} ${pts} ${xS(ds.data.length-1)},${pad.t+gH}`;
+    s+=`<polygon points="${fillPts}" fill="${ds.color}" opacity="0.1"/>`;
+    s+=`<polyline points="${pts}" fill="none" stroke="${ds.color}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    ds.data.forEach((v,i)=>{
+      s+=`<circle cx="${xS(i)}" cy="${yS(v)}" r="4" fill="${ds.color}" stroke="white" stroke-width="1.5"/>`;
+      s+=`<text x="${xS(i)}" y="${yS(v)-8}" text-anchor="middle" font-size="9" fill="${ds.color}" font-weight="600">${F(v)}</text>`;
+    });
+  });
+  labels.forEach((l,i)=>s+=`<text x="${xS(i)}" y="${H-pad.b+14}" text-anchor="middle" font-size="9" fill="#64748B">${l}</text>`);
+  datasets.forEach((ds,i)=>s+=`<rect x="${pad.l+i*120}" y="${H-8}" width="10" height="8" fill="${ds.color}" rx="1"/><text x="${pad.l+i*120+14}" y="${H-1}" font-size="9" fill="#64748B">${ds.label||''}</text>`);
+  s+='</svg>';return s;
+}
+function svgDonut(labels,values,colors){
+  const W=200,H=200,cx=100,cy=90,R=70,r=42;
+  const total=values.reduce((a,b)=>a+b,0)||1;
+  let s=`<svg viewBox="0 0 ${W} ${H}" class="chart-svg">`;
+  let startAngle=-Math.PI/2;
+  values.forEach((v,i)=>{
+    const angle=(v/total)*2*Math.PI;
+    const endAngle=startAngle+angle;
+    const x1=cx+R*Math.cos(startAngle),y1=cy+R*Math.sin(startAngle);
+    const x2=cx+R*Math.cos(endAngle),y2=cy+R*Math.sin(endAngle);
+    const ix1=cx+r*Math.cos(startAngle),iy1=cy+r*Math.sin(startAngle);
+    const ix2=cx+r*Math.cos(endAngle),iy2=cy+r*Math.sin(endAngle);
+    const large=angle>Math.PI?1:0;
+    s+=`<path d="M${ix1},${iy1} L${x1},${y1} A${R},${R} 0 ${large} 1 ${x2},${y2} L${ix2},${iy2} A${r},${r} 0 ${large} 0 ${ix1},${iy1}" fill="${colors[i%colors.length]}" stroke="white" stroke-width="2"/>`;
+    const midA=startAngle+angle/2;
+    const lx=cx+(R+14)*Math.cos(midA),ly=cy+(R+14)*Math.sin(midA);
+    if(v/total>0.08)s+=`<text x="${lx}" y="${ly+3}" text-anchor="middle" font-size="9" fill="#374151" font-weight="600">${Math.round(v/total*100)}%</text>`;
+    startAngle=endAngle;
+  });
+  s+=`<circle cx="${cx}" cy="${cy}" r="${r-3}" fill="white"/>`;
+  s+=`<text x="${cx}" y="${cy+4}" text-anchor="middle" font-size="11" fill="#1B3A8C" font-weight="800">${F(total)}</text>`;
+  s+='</svg>';return s;
+}
+function svgBubble(items){
+  const W=500,H=230,pad={l:60,r:20,t:15,b:50};
+  const gW=W-pad.l-pad.r,gH=H-pad.t-pad.b;
+  let s=`<svg viewBox="0 0 ${W} ${H}" class="chart-svg">`;
+  ['High','Medium','Positive'].forEach((lbl,i)=>{
+    const y=pad.t+gH*(1-[0.85,0.5,0.15][i]);
+    s+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4"/>`;
+    s+=`<text x="${pad.l-4}" y="${y+4}" text-anchor="end" font-size="9" fill="#94A3B8">${lbl}</text>`;
+  });
+  [0,20,40,60].forEach(v=>{
+    const x=pad.l+(v/70)*gW;
+    s+=`<line x1="${x}" y1="${pad.t}" x2="${x}" y2="${pad.t+gH}" stroke="#E2E8F0" stroke-width="1"/>`;
+    s+=`<text x="${x}" y="${H-pad.b+14}" text-anchor="middle" font-size="9" fill="#94A3B8">${v}%</text>`;
+  });
+  s+=`<text x="${W/2}" y="${H-6}" text-anchor="middle" font-size="9" fill="#94A3B8">Frequency (% mentions)</text>`;
+  items.forEach((r)=>{
+    const sev=r[2];const xPct=N(r[3]);
+    const yFrac=sev==='High'?0.85:sev==='Medium'?0.5:0.15;
+    const x=pad.l+(xPct/70)*gW;const y=pad.t+gH*(1-yFrac);
+    const rad=Math.max(12,xPct/2.8);
+    const col=sev==='High'?C.r+'cc':sev==='Medium'?C.y+'cc':C.g+'cc';
+    s+=`<circle cx="${x}" cy="${y}" r="${rad}" fill="${col}"/>`;
+    const lbl=r[0].length>14?r[0].substring(0,13)+'…':r[0];
+    s+=`<text x="${x}" y="${y-rad-3}" text-anchor="middle" font-size="8" fill="#374151">${lbl}</text>`;
+  });
+  s+='</svg>';return s;
+}
+
+function kpiMap(){
+  const m={};
+  DATA.kpi.forEach(r=>{if(r[0]&&r[0]!=='metric')m[r[0]]={v:N(r[1]),t:N(r[2]),l:N(r[3])};});
+  return m;
+}
+function getFunnel(){return secNext('mql','stage','week')}
+function getWeekly(){return secNext('mql','week','source')}
+function getSources(){
+  const rows=DATA.mql;let i=0;
+  while(i<rows.length&&rows[i][0]!=='source')i++;i++;
+  const o=[];while(i<rows.length&&rows[i][0])o.push(rows[i++]);return o;
+}
+function getFBKPI(){return secNext('facebook','metric','campaign')}
+function getFBCamp(){return secNext('facebook','campaign','audience')}
+function getFBAud(){return secNext('facebook','audience','device')}
+function getFBDev(){
+  const rows=DATA.facebook;let i=0;
+  while(i<rows.length&&rows[i][0]!=='device')i++;i++;
+  const o=[];while(i<rows.length&&rows[i][0])o.push(rows[i++]);return o;
+}
+function getPPSum(){
+  const rows=DATA.painpoints;let i=0;
+  while(i<rows.length&&rows[i][0]!=='metric')i++;i++;
+  const m={};while(i<rows.length&&rows[i][0]&&rows[i][0]!=='sentiment'){m[rows[i][0]]=N(rows[i][1]);i++;}return m;
+}
+function getPPSent(){return secNext('painpoints','sentiment','title')}
+function getPPCards(){
+  const rows=DATA.painpoints;let i=0;
+  while(i<rows.length&&rows[i][0]!=='title')i++;i++;
+  const o=[];while(i<rows.length&&rows[i][0])o.push(rows[i++]);return o;
+}
+
+function renderOverview(){
+  const kpi=kpiMap();
+  const now=new Date();const mo=now.toLocaleString('default',{month:'long',year:'numeric'});
+  document.getElementById('hdrSub').textContent=`${mo} · Marketing Team`;
+  document.getElementById('hdrDate').textContent=`📅 ${mo}`;
+  document.getElementById('ov-sub').textContent=`All figures vs. previous month · ${mo}`;
+  const mq=kpi['Total MQLs']||{v:0,t:0,l:0};const ro=kpi['Facebook ROAS']||{v:0,t:0,l:0};
+  document.getElementById('ov-h').textContent=`${mo} — MQLs: ${F(mq.v)} | ROAS: ${ro.v}x | ${mq.v>=mq.t?'Target Achieved ✅':'Below Target ⚠️'}`;
+  document.getElementById('ov-p').textContent=`Total MQLs: ${F(mq.v)} (Target: ${F(mq.t)}) · Facebook ROAS: ${ro.v}x · Source: ${isLive?'🟢 Live Google Sheets':'📦 Embedded Cache'} · ${new Date().toLocaleTimeString()}`;
+  const r1=[{l:'Total MQLs',k:'Total MQLs',i:'🎯',c:'cp',f:v=>F(v)},
+    {l:'Facebook ROAS',k:'Facebook ROAS',i:'💰',c:'cg',f:v=>v+'x'},
+    {l:'FB Ads CTR',k:'FB Ads CTR',i:'🖱️',c:'ca',f:v=>v+'%'},
+    {l:'Cost Per Lead',k:'Cost Per Lead',i:'💵',c:'cy',f:v=>'
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
