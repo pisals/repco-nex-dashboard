@@ -208,27 +208,24 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 <script>
 // ════════════════════════════════════════════════════
-//  REPCO NEX DASHBOARD
-//  ✅ UPDATED: Sheet ID = 1HIxq8-_kCin-DrXGyd6DvRcLHInOR22DnPX18UiOjvQ
-//  ✅ UPDATED: GIDs confirmed from user-provided tab URLs
+//  REPCO NEX DASHBOARD — DIRECT CSV LINKS (NO CORS PROXY)
+//  ✅ UPDATED: Uses your published CSV links directly
 // ════════════════════════════════════════════════════
 
-// ── ✅ UPDATED BASE URL (your real Google Sheet) ──
-const BASE = 'https://docs.google.com/spreadsheets/d/1HIxq8-_kCin-DrXGyd6DvRcLHInOR22DnPX18UiOjvQ/pub';
-
-// ── ✅ UPDATED GIDs (confirmed from your tab URLs) ──
-const GIDS = {
-  kpi:        '0',
-  mql:        '276659122',
-  facebook:   '706861186',
-  painpoints: '1473659813',
-  news:       '1672593116'
+// ── ✅ YOUR DIRECT PUBLISHED CSV LINKS ──
+const SHEET_URLS = {
+  kpi: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRs_iHSvGeIRNfRA5fsSAOAS7aRS9v7cQ3QvEbisP1Mw__nvzgtoaQt-oQUqMTRQ0obnyk5hqczYGQp/pub?gid=0&single=true&output=csv',
+  mql: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRs_iHSvGeIRNfRA5fsSAOAS7aRS9v7cQ3QvEbisP1Mw__nvzgtoaQt-oQUqMTRQ0obnyk5hqczYGQp/pub?gid=614262160&single=true&output=csv',
+  facebook: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRs_iHSvGeIRNfRA5fsSAOAS7aRS9v7cQ3QvEbisP1Mw__nvzgtoaQt-oQUqMTRQ0obnyk5hqczYGQp/pub?gid=449377214&single=true&output=csv',
+  painpoints: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRs_iHSvGeIRNfRA5fsSAOAS7aRS9v7cQ3QvEbisP1Mw__nvzgtoaQt-oQUqMTRQ0obnyk5hqczYGQp/pub?gid=273033292&single=true&output=csv',
+  news: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRs_iHSvGeIRNfRA5fsSAOAS7aRS9v7cQ3QvEbisP1Mw__nvzgtoaQt-oQUqMTRQ0obnyk5hqczYGQp/pub?gid=1833997747&single=true&output=csv'
 };
 
-const PROXIES=[
-  u=>`https://corsproxy.io/?${encodeURIComponent(u)}`,
-  u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-  u=>u
+// ── CORS Proxies (try multiple in order) ──
+const PROXIES = [
+  u => u, // Try direct first
+  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  u => `https://corsproxy.io/?${encodeURIComponent(u)}`
 ];
 
 const FB={
@@ -525,7 +522,236 @@ function renderOverview(){
   const r1=[{l:'Total MQLs',k:'Total MQLs',i:'🎯',c:'cp',f:v=>F(v)},
     {l:'Facebook ROAS',k:'Facebook ROAS',i:'💰',c:'cg',f:v=>v+'x'},
     {l:'FB Ads CTR',k:'FB Ads CTR',i:'🖱️',c:'ca',f:v=>v+'%'},
-    {l:'Cost Per Lead',k:'Cost Per Lead',i:'💵',c:'cy',f:v=>'
+    {l:'Cost Per Lead',k:'Cost Per Lead',i:'💵',c:'cy',f:v=>'$'+v,inv:true}];
+  const r2=[{l:'MQL→SQL Rate',k:'MQL to SQL Rate',i:'🔄',c:'ct',f:v=>v+'%'},
+    {l:'Acq. Cost',k:'Customer Acq Cost',i:'📉',c:'cr',f:v=>'$'+v,inv:true},
+    {l:'Impressions',k:'Total Impressions',i:'📣',c:'cp',f:v=>F(v)},
+    {l:'Landing CVR',k:'Landing Page CVR',i:'🌐',c:'cg',f:v=>v+'%'}];
+  [['kpi1',r1],['kpi2',r2]].forEach(([id,cards])=>{
+    document.getElementById(id).innerHTML=cards.map(cd=>{
+      const d=kpi[cd.k]||{v:0,t:0,l:0};const dt=DLT(d.v,d.l);const good=cd.inv?dt.d==='dn':dt.d==='up';
+      return `<div class="kc ${cd.c}"><div class="ki ${cd.c}">${cd.i}</div><div class="klb">${cd.l}</div><div class="kv">${cd.f(d.v)}</div><div class="ks">Target: ${cd.f(d.t)} · Last: ${cd.f(d.l)}</div><div class="kd ${good?'up':'dn'}">${good?'▲':'▼'} ${dt.p}% MoM</div></div>`;
+    }).join('');
+  });
+  const mq_v=N((DATA.kpi.find(r=>r[0]==='Total MQLs')||[])[1]);
+  const mq_l=N((DATA.kpi.find(r=>r[0]==='Total MQLs')||[])[3]);
+  const cp_v=N((DATA.kpi.find(r=>r[0]==='Cost Per Lead')||[])[1]);
+  const cp_l=N((DATA.kpi.find(r=>r[0]==='Cost Per Lead')||[])[3]);
+  document.getElementById('trendWrap').innerHTML=svgLine(
+    ['3mo ago','2mo ago','Last Month','This Month'],
+    [{label:'MQLs',data:[Math.round(mq_l*.82),Math.round(mq_l*.91),mq_l,mq_v],color:C.p},
+     {label:'CPL ($)',data:[+(cp_l*1.18).toFixed(1),+(cp_l*1.08).toFixed(1),cp_l,cp_v],color:C.r}],
+    {w:460,h:190}
+  );
+  const srcs=getSources();
+  document.getElementById('donutWrap').innerHTML=svgDonut(srcs.map(r=>r[0]),srcs.map(r=>N(r[2])),C.palette);
+  document.getElementById('srcLgd').innerHTML=srcs.map((r,i)=>`<div class="li"><div class="ll"><div class="ld" style="background:${C.palette[i%C.palette.length]}"></div>${r[0]}</div><span>${F(N(r[2]))}</span></div>`).join('');
+  const pb=[
+    {k:'Total MQLs',l:'MQL Volume',f:(v,t)=>`${F(v)} / ${F(t)}`},
+    {k:'Facebook ROAS',l:'Facebook ROAS',f:(v,t)=>`${v}x / ${t}x`},
+    {k:'Cost Per Lead',l:'Cost Per Lead (↓ better)',f:(v,t)=>`$${v} / $${t}`,inv:true},
+    {k:'MQL to SQL Rate',l:'MQL→SQL Rate',f:(v,t)=>`${v}% / ${t}%`},
+    {k:'Landing Page CVR',l:'Landing CVR',f:(v,t)=>`${v}% / ${t}%`},
+    {k:'Total Impressions',l:'Impressions',f:(v,t)=>`${F(v)} / ${F(t)}`},
+  ];
+  document.getElementById('progBars').innerHTML=pb.map(p=>{
+    const d=kpi[p.k]||{v:0,t:0};const pc=p.inv?PCT(d.t,d.v):PCT(d.v,d.t);
+    const col=pc>=100?C.g:pc>=80?C.a:C.y;
+    return `<div class="pr"><div class="pl"><span>${p.l}</span><span>${p.f(d.v,d.t)} (${pc}%)</span></div><div class="pb"><div class="pf" style="width:${pc}%;background:${col}"></div></div></div>`;
+  }).join('');
+}
+function renderMQL(){
+  const fn=getFunnel();const wk=getWeekly();const sr=getSources();
+  const now=new Date();
+  document.getElementById('mql-sub').textContent=`Full-funnel — ${now.toLocaleString('default',{month:'long',year:'numeric'})}`;
+  const fc=['cp','ca','ct','cg','cy'];const fi=['👁️','🖱️','📋','✅','💼'];
+  document.getElementById('fnlK').innerHTML=fn.slice(0,5).map((r,i)=>
+    `<div class="kc ${fc[i]}"><div class="ki ${fc[i]}">${fi[i]}</div><div class="klb">${r[0]}</div><div class="kv" style="font-size:1.25rem">${F(N(r[1]))}</div><div class="kd up">▲ +${N(r[2])}%</div></div>`).join('');
+  const fbg=['#1B3A8C','#1D4ED8',C.t,C.g,C.y,C.r];const fw=['100%','88%','72%','55%','38%','22%'];
+  document.getElementById('fnlSteps').innerHTML=fn.map((r,i)=>`<div class="fs" style="background:${fbg[i]||C.p};width:${fw[i]||'15%'}">${fi[i]||'●'} ${r[0]}<strong>${F(N(r[1]))}</strong></div>`).join('');
+  document.getElementById('wkWrap').innerHTML=svgBar({labels:wk.map(r=>r[0]),datasets:[{label:'MQLs',data:wk.map(r=>N(r[1])),color:C.p},{label:'SQLs',data:wk.map(r=>N(r[2])),color:C.g}]},{w:460,h:200});
+  document.getElementById('srcTbl').innerHTML=sr.map(r=>`<tr><td>${r[0]}</td><td>${F(N(r[1]))}</td><td>${F(N(r[2]))}</td><td>${N(r[3])}%</td><td>${F(N(r[4]))}</td><td>${N(r[5])}%</td><td>${N(r[6])===0?'Free':'$'+N(r[6])}</td><td><span class="pl2 ${PC(r[7])}">${r[7]||'—'}</span></td></tr>`).join('');
+}
+function renderFacebook(){
+  const fbk={};getFBKPI().forEach(r=>{if(r[0])fbk[r[0]]={v:N(r[1]),t:N(r[2]),l:N(r[3])};});
+  const camp=getFBCamp();const aud=getFBAud();const dev=getFBDev();
+  const now=new Date();const sp=fbk['Total Spend']||{v:0};
+  document.getElementById('fb-sub').textContent=`Paid media — ${now.toLocaleString('default',{month:'long',year:'numeric'})} · Budget: $${F(sp.v)}`;
+  const fc1=[{l:'ROAS',k:'ROAS',i:'📈',c:'cg',f:v=>v+'x'},{l:'CTR',k:'CTR',i:'🖱️',c:'ca',f:v=>v+'%'},{l:'CPM',k:'CPM',i:'💵',c:'cy',f:v=>'$'+v,inv:true},{l:'CPC',k:'CPC',i:'💰',c:'cr',f:v=>'$'+v,inv:true}];
+  const fc2=[{l:'Total Spend',k:'Total Spend',i:'💳',c:'cp',f:v=>'$'+F(v)},{l:'Impressions',k:'Impressions',i:'👁️',c:'ct',f:v=>F(v)},{l:'Link Clicks',k:'Link Clicks',i:'🔗',c:'ca',f:v=>F(v)},{l:'Conversions',k:'Conversions',i:'✅',c:'cg',f:v=>F(v)}];
+  [['fb1',fc1],['fb2',fc2]].forEach(([id,cards])=>{
+    document.getElementById(id).innerHTML=cards.map(cd=>{
+      const d=fbk[cd.k]||{v:0,t:0,l:0};const dt=DLT(d.v,d.l);const good=cd.inv?dt.d==='dn':dt.d==='up';
+      return `<div class="kc ${cd.c}"><div class="ki ${cd.c}">${cd.i}</div><div class="klb">${cd.l}</div><div class="kv">${cd.f(d.v)}</div><div class="ks">Target: ${cd.f(d.t)} · Last: ${cd.f(d.l)}</div><div class="kd ${good?'up':'dn'}">${good?'▲':'▼'} ${dt.p}%</div></div>`;
+    }).join('');
+  });
+  document.getElementById('campWrap').innerHTML=svgBar({labels:camp.map(r=>r[0]),datasets:[{label:'Spend $',data:camp.map(r=>N(r[2])),color:C.p},{label:'Leads',data:camp.map(r=>N(r[6])),color:C.g}]},{w:460,h:200});
+  document.getElementById('audWrap').innerHTML=svgHBar(aud.map(r=>r[0]),aud.map(r=>N(r[1])),C.palette);
+  document.getElementById('campTbl').innerHTML=camp.map(r=>`<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>$${F(N(r[2]))}</td><td>${F(N(r[3]))}</td><td>${N(r[4])}%</td><td>$${N(r[5])}</td><td>${F(N(r[6]))}</td><td>${N(r[7])}x</td><td><span class="pl2 ${PC(r[8])}">${r[8]||'—'}</span></td></tr>`).join('');
+  const dC=[C.p,C.a,C.y];
+  document.getElementById('devWrap').innerHTML=svgDonut(dev.map(r=>r[0]),dev.map(r=>N(r[1])),dC);
+  document.getElementById('devLgd').innerHTML=dev.map((r,i)=>`<div class="li"><div class="ll"><div class="ld" style="background:${dC[i]}"></div>${r[0]}</div><span>${N(r[1])}%</span></div>`).join('');
+  const mk=['ROAS','CTR','CPM','CPC'];const md=mk.map(k=>fbk[k]||{v:0,t:0,l:0});
+  document.getElementById('fbCmpWrap').innerHTML=svgBar({labels:mk,datasets:[{label:'Current',data:md.map(d=>d.v),color:C.p},{label:'Target',data:md.map(d=>d.t),color:C.a},{label:'Last Mo.',data:md.map(d=>d.l),color:'#94A3B8'}]},{w:460,h:200});
+}
+function renderPainPoints(){
+  const sm=getPPSum();const st=getPPSent();const pc=getPPCards();
+  const ppC=[{l:'Pain Points',k:'Pain Points Tracked',i:'🔍',c:'cr'},{l:'NPS Score',k:'NPS Score',i:'⭐',c:'cy'},{l:'CSAT Score',k:'CSAT Score',i:'😊',c:'cg',sx:'%'},{l:'Mentions',k:'Mentions Analyzed',i:'💬',c:'ca'}];
+  document.getElementById('ppK').innerHTML=ppC.map(cd=>`<div class="kc ${cd.c}"><div class="ki ${cd.c}">${cd.i}</div><div class="klb">${cd.l}</div><div class="kv">${F(sm[cd.k]||0)}${cd.sx||''}</div></div>`).join('');
+  document.getElementById('bubWrap').innerHTML=svgBubble(pc);
+  const sC=[C.g,C.y,C.r];
+  document.getElementById('sentWrap').innerHTML=svgDonut(st.map(r=>r[0]),st.map(r=>N(r[1])),sC);
+  document.getElementById('sentLgd').innerHTML=st.map((r,i)=>`<div class="li"><div class="ll"><div class="ld" style="background:${sC[i]}"></div>${r[0]}</div><span>${N(r[1])}%</span></div>`).join('');
+  const sI={'High':'💸','Medium':'⏳','Positive':'⭐'};const sCl={'High':'r','Medium':'y','Positive':'g'};
+  const lbs={'High':'🔴 High Priority','Medium':'🟡 Medium Priority','Positive':'🟢 Positive Signals'};
+  document.getElementById('painCards').innerHTML=['High','Medium','Positive'].map(sev=>{
+    const items=pc.filter(r=>r[2]===sev);if(!items.length)return'';
+    return `<div style="font-size:.73rem;font-weight:800;color:${sev==='High'?C.r:sev==='Medium'?C.y:C.g};margin:13px 0 9px;text-transform:uppercase;letter-spacing:.5px">${lbs[sev]}</div>`+
+    items.map(r=>`<div class="pcd"><div class="pic ${sCl[r[2]]}">${sI[r[2]]||'💬'}</div><div class="pct"><h4>${r[0]}</h4><p>${r[1]}</p><div class="pm"><span class="pl2 ${sCl[r[2]]}">${r[2]}</span><span class="pl2 b">${N(r[3])}% mentions</span><span class="pl2 gr">${r[4]}</span><span class="pl2 p">→ ${r[5]}</span></div></div></div>`).join('');
+  }).join('');
+}
+function renderNews(){
+  const nr=DATA.news.filter(r=>r[0]&&r[0]!=='category');
+  const cc={};nr.forEach(r=>{cc[r[0]]=(cc[r[0]]||0)+1});
+  const hi=nr.filter(r=>r[4]==='High').length;
+  document.getElementById('newsK').innerHTML=`
+    <div class="kc ca"><div class="ki ca">📰</div><div class="klb">Total Items</div><div class="kv">${nr.length}</div></div>
+    <div class="kc cr"><div class="ki cr">🔴</div><div class="klb">High Impact</div><div class="kv">${hi}</div></div>
+    <div class="kc cy"><div class="ki cy">⚔️</div><div class="klb">Competitor Moves</div><div class="kv">${cc['Competitor']||0}</div></div>
+    <div class="kc cg"><div class="ki cg">📈</div><div class="klb">Opportunities</div><div class="kv">${(cc['Trend']||0)+(cc['Industry']||0)}</div></div>`;
+  const imp={'High':'🔴','Medium':'🟡','Low':'🟢'};
+  const card=r=>`<div class="nc ${r[0]}"><div class="ntg ${r[0]}">📌 ${r[0]}</div><h4>${r[1]}</h4><p>${r[2]}</p><div class="nf"><span class="nd">📅 ${r[3]}</span><span class="ni ${r[4]}">${imp[r[4]]||''} ${r[4]} Impact</span></div></div>`;
+  const half=Math.ceil(nr.length/2);
+  document.getElementById('newsGrid').innerHTML=`<div>${nr.slice(0,half).map(card).join('')}</div><div>${nr.slice(half).map(card).join('')}</div>`;
+}
+function renderRecommendations(){
+  const kpi=kpiMap();
+  const now=new Date();
+  document.getElementById('rec-sub').textContent=`Auto-generated · ${now.toLocaleString('default',{month:'long',year:'numeric'})} · ${isLive?'🟢 Live data':'📦 Embedded cache'}`;
+  const mq=kpi['Total MQLs']||{v:0,t:0};const sq=kpi['MQL to SQL Rate']||{v:0,t:0};
+  const cp=kpi['Cost Per Lead']||{v:0,t:0};const ro=kpi['Facebook ROAS']||{v:0,t:0};
+  const np=kpi['NPS Score']||{v:0,t:0};
+  const urg=[];const str=[];
+  urg.push(mq.v<mq.t?{n:'01 — MQL VOLUME ⚠️',t:`Boost MQLs: ${F(mq.v)} vs Target ${F(mq.t)}`,d:`MQLs are ${F(mq.t-mq.v)} below target. Increase Facebook budget 15%, activate retargeting, launch email re-engagement.`}:{n:'01 — MQL ✅',t:`MQL Exceeded: ${F(mq.v)} vs ${F(mq.t)} — Scale`,d:`Target exceeded by ${F(mq.v-mq.t)}. Replicate Retargeting V2 and Spring Promo A. Increase budget 20% on highest ROAS campaigns.`});
+  if(sq.v<sq.t)urg.push({n:'02 — SQL RATE ⚠️',t:`Improve MQL→SQL: ${sq.v}% vs ${sq.t}% Target`,d:`Add intent signals (pricing page + demo request) to lead scoring. Expected: +${(sq.t-sq.v).toFixed(1)}pp SQL improvement.`});
+  urg.push(cp.v>cp.t?{n:'03 — CPL ⚠️',t:`Reduce CPL: $${cp.v} vs $${cp.t} Target`,d:`CPL $${(cp.v-cp.t).toFixed(0)} over target. Pause underperformers, shift budget to retargeting, test video creative (40% lower CPL).`}:{n:'03 — CPL ✅',t:`CPL On Target: $${cp.v} vs $${cp.t}`,d:`CPL $${(cp.t-cp.v).toFixed(0)} below target. Scale winning campaigns 20%. Test new lookalike audiences.`});
+  str.push({n:'04 — VIDEO',t:'Shift 40% Budget to Reels / Short-Form Video',d:'Forrester 2026: Video → 3x leads at 40% lower CPL. Produce 3×15s Reels. Reallocate $2,500 from static → video.'});
+  str.push(ro.v<ro.t?{n:'05 — ROAS ⚠️',t:`Improve ROAS: ${ro.v}x vs ${ro.t}x`,d:`Pause Brand Awareness (2.1x). Shift budget to Retargeting V2 (6.2x). Activate Meta Advantage+ Creative.`}:{n:'05 — ROAS ✅',t:`ROAS Achieved: ${ro.v}x — Scale`,d:`Exceeds target. Scale Retargeting V2 and Spring Promo A by 25%. Expand lookalike audiences.`});
+  str.push({n:'06 — PAIN POINTS',t:'Fix Pricing Clarity + Onboarding Complexity',d:'38% = pricing confusion. 29% = onboarding complexity. Redesign pricing page, simplify 7→3 steps. Expected: -15% churn.'});
+  str.push(np.v>=40?{n:'07 — NPS ✅',t:`Launch Referral Program — NPS at ${np.v}`,d:`NPS at ${np.v} signals strong advocacy. Launch B2B referral for ASEAN clients. Target: 150 referral MQLs in Q2.`}:{n:'07 — NPS ⚠️',t:`Improve NPS from ${np.v} to 40+`,d:`Deploy chatbot to cut support 18hr→4hr. Add post-delivery survey within 48hrs.`});
+  str.push({n:'08 — AWARDS',t:'Deploy AVEVA + Huawei Awards in All Channels',d:'Add award badges to FB creatives, landing pages, email headers. A/B test. Expected CTR lift: 12-18%.'});
+  const mkR=arr=>arr.map(r=>`<div class="rc"><div class="rn">${r.n}</div><h4>${r.t}</h4><p>${r.d}</p></div>`).join('');
+  document.getElementById('recUrg').innerHTML=`<div style="font-size:.71rem;font-weight:800;color:${C.r};text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">🔴 Urgent — This Week</div>`+mkR(urg);
+  document.getElementById('recStr').innerHTML=`<div style="font-size:.71rem;font-weight:800;color:${C.y};text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">🟡 Strategic — Next 4 Weeks</div>`+mkR(str);
+  const pRows=[{k:'Total MQLs',f:v=>F(v),b:1.17,conf:'High'},{k:'MQL to SQL Rate',f:v=>v+'%',b:1.12,conf:'High'},{k:'Facebook ROAS',f:v=>v+'x',b:1.1,conf:'Med'},{k:'Cost Per Lead',f:v=>'$'+v,b:.87,conf:'Med',lo:true},{k:'NPS Score',f:v=>v,b:1.1,conf:'Med'},{k:'Customer Acq Cost',f:v=>'$'+v,b:.91,conf:'High',lo:true}];
+  document.getElementById('projTbl').innerHTML=pRows.map(p=>{
+    const d=kpi[p.k]||{v:0,t:0};const pr=+(d.v*p.b).toFixed(1);const ok=p.lo?d.v<=d.t:d.v>=d.t;const gap=Math.abs(p.lo?d.v-d.t:d.t-d.v).toFixed(1);
+    return `<tr><td><strong>${p.k}</strong></td><td>${p.f(d.v)}</td><td>${p.f(d.t)}</td><td style="color:${ok?C.g:C.r}">${ok?'✅ On Target':'⚠️ Gap: '+gap}</td><td style="color:${C.g};font-weight:700">${p.f(pr)}</td><td><span class="pl2 ${p.conf==='High'?'g':'y'}">${p.conf}</span></td></tr>`;
+  }).join('');
+}
+function renderAll(){
+  renderOverview();renderMQL();renderFacebook();renderPainPoints();renderNews();renderRecommendations();
+}
+function switchTab(i){
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.sec').forEach((s,j)=>s.classList.toggle('active',j===i));
+}
+function showNotice(msg,type,dur=4000){
+  const el=document.getElementById('notice');
+  el.textContent=msg;el.className='notice '+type;el.style.display='flex';
+  if(dur)setTimeout(()=>el.style.display='none',dur);
+}
+
+// ── ✅ UPDATED FETCH: Uses direct CSV URLs with multiple proxy attempts ──
+async function fetchSheet(key){
+  const url = SHEET_URLS[key];
+  for(const proxy of PROXIES){
+    try{
+      const ctrl=new AbortController();
+      const tid=setTimeout(()=>ctrl.abort(),8000);
+      const res=await fetch(proxy(url),{
+        signal:ctrl.signal,
+        cache:'no-store',
+        mode:'cors'
+      });
+      clearTimeout(tid);
+      if(!res.ok)continue;
+      const txt=await res.text();
+      if(txt&&txt.includes(',')&&txt.length>30)return txt;
+    }catch(e){
+      console.log(`Proxy failed for ${key}:`, e.message);
+    }
+  }
+  return null;
+}
+
+async function syncNow(){
+  const btn=document.querySelector('.sbtn');
+  btn.disabled=true;btn.textContent='⏳ Syncing…';
+  showNotice('🔄 Fetching from Google Sheets…','warn',0);
+  let live=0;
+  const results = await Promise.allSettled(Object.keys(SHEET_URLS).map(async k=>{
+    const txt=await fetchSheet(k);
+    if(txt){DATA[k]=csv(txt);live++;return true;}
+    return false;
+  }));
+  isLive=live===Object.keys(SHEET_URLS).length;
+  renderAll();
+  document.getElementById('lastSync').textContent=`Synced: ${new Date().toLocaleTimeString()}`;
+  const badge=document.getElementById('srcBadge');
+  if(isLive){
+    badge.textContent='🟢 Live';
+    badge.style.background='#DCFCE7';
+    badge.style.color='#15803D';
+    showNotice(`✅ Live data from Google Sheets (${live}/5 tabs)!`,'ok');
+  }else if(live>0){
+    badge.textContent=`🟡 Partial (${live}/5)`;
+    badge.style.background='#FEF9C3';
+    badge.style.color='#A16207';
+    showNotice(`⚠️ Partial sync: ${live}/5 tabs loaded. Using cache for missing tabs.`,'warn');
+  }else{
+    badge.textContent='📦 Cache';
+    badge.style.background='#FEF9C3';
+    badge.style.color='#A16207';
+    showNotice('⚠️ Could not fetch live data. Using embedded cache. Check: sheets published & CORS proxy working.','warn',6000);
+  }
+  btn.disabled=false;btn.textContent='🔄 Sync Now';
+}
+
+// ══ INIT — Load embedded cache first, try live in background ══
+(function(){
+  Object.keys(SHEET_URLS).forEach(k=>DATA[k]=csv(FB[k]));
+  renderAll();
+  document.getElementById('lastSync').textContent=`Cache: ${new Date().toLocaleTimeString()}`;
+  
+  // Silent background sync on load
+  setTimeout(async()=>{
+    let live=0;
+    await Promise.allSettled(Object.keys(SHEET_URLS).map(async k=>{
+      const txt=await fetchSheet(k);
+      if(txt){DATA[k]=csv(txt);live++;}
+    }));
+    if(live>0){
+      isLive=live===Object.keys(SHEET_URLS).length;
+      renderAll();
+      const badge=document.getElementById('srcBadge');
+      if(isLive){
+        badge.textContent='🟢 Live';
+        badge.style.background='#DCFCE7';
+        badge.style.color='#15803D';
+        document.getElementById('lastSync').textContent=`Live: ${new Date().toLocaleTimeString()}`;
+        showNotice('✅ Dashboard auto-updated with live Google Sheets data!','ok');
+      }else{
+        badge.textContent=`🟡 Partial (${live}/5)`;
+        badge.style.background='#FEF9C3';
+        badge.style.color='#A16207';
+      }
+    }
+  },1000);
+})();
+</script>
+</body>
+</html>
 
 							<script>
                             	
